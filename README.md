@@ -4,7 +4,7 @@ The repository main goal is to implement the most known and used data structures
 
 ## Data structures
 
-- [ ] Linked list
+- [x] Linked list
 - [ ] Doubly linked list
 - [ ] Stack
 - [ ] Min Heap
