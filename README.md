@@ -5,14 +5,14 @@ The repository main goal is to implement the most known and used data structures
 ## Data structures
 
 - [x] Linked list
-- [ ] Doubly linked list
-- [ ] Stack
+- [x] Doubly linked list
+- [x] Stack
+- [ ] Tree
 - [ ] Min Heap
 - [ ] Max Heap
 - [ ] Stack
 - [ ] Binary tree
 - [ ] Graph
-- [ ] Tree
 - [ ] Hash table
 - [ ] Queue
 - [ ] Circular linked list
