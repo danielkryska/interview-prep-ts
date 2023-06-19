@@ -7,12 +7,13 @@ The repository main goal is to implement the most known and used data structures
 - [x] Linked list
 - [x] Doubly linked list
 - [x] Stack
+- [x] Undirected graph
+- [ ] Directed graph
 - [ ] Tree
 - [ ] Min Heap
 - [ ] Max Heap
 - [ ] Stack
 - [ ] Binary tree
-- [ ] Graph
 - [ ] Hash table
 - [ ] Queue
 - [ ] Circular linked list
