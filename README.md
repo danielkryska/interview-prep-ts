@@ -83,6 +83,8 @@ To each class method add [time complexity](https://interviews.school/timecomplex
 
 ## Design patterns
 
+All of the gang of four [Design patterns](https://refactoring.guru/design-patterns).
+
 ### Creational
 
 - [ ] builder
