@@ -1,13 +1,15 @@
-interface Vertex {
+import { Map } from './map';
+ 
+interface Vertex<DataType> {
     key: string;
-    data: any;
+    data: DataType;
 }
 
-export class UndirectedGraph {
-    _vertexes: Map<string, Vertex> = new Map();
+export class UndirectedGraph<DataType> {
+    _vertexes: Map<string, Vertex<DataType>> = new Map();
     _graph: Map<string, string[]> = new Map();
 
-    addVertex(vertex: Vertex): boolean {
+    addVertex(vertex: Vertex<DataType>): boolean {
         if (this._vertexes.has(vertex.key)) {
             return false;
         }
@@ -32,7 +34,7 @@ export class UndirectedGraph {
             return false;
         }
 
-        this._graph.set(vertexKey1, [...this._graph.get(vertexKey1) as string[], vertexKey2]);
+        this._graph.set(vertexKey1, [...new Set([...this._graph.get(vertexKey1) as string[], vertexKey2])]);
         return true;
     }
     removeEdge(vertexKey1: string, vertexKey2: string): void {
@@ -41,5 +43,6 @@ export class UndirectedGraph {
         }
 
         this._graph.set(vertexKey1, (this._graph.get(vertexKey1) as string[]).filter((key) => key !== vertexKey2));
+        this._graph.set(vertexKey2, (this._graph.get(vertexKey2) as string[]).filter((key) => key !== vertexKey1));
     }
 }

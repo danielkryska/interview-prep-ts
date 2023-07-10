@@ -4,31 +4,27 @@ import { DoublyLinkedList } from "./doubly-linked-list";
 describe('Doubly linked list', () => {
     it('should add element', () => {
         const linkedList = new DoublyLinkedList();
-        const node1 = { data: 1, child: null, parent: null };
-        linkedList.add(node1);
+        linkedList.add(1);
         
-        expect(linkedList._head?.data).toEqual(node1.data);
+        expect(linkedList._head?.data).toEqual(1);
         expect(linkedList._tail).toEqual(null);
 
-        const node2 = { data: 2, child: null, parent: null };
-        linkedList.add(node2);
+        linkedList.add(2);
 
-        expect(linkedList._head?.data).toEqual(node1.data);
-        expect(node2.data).toEqual(linkedList._tail?.data);
-        expect(linkedList._tail?.parent?.data).toEqual(node1.data);
+        expect(linkedList._head?.data).toEqual(1);
+        expect(2).toEqual(linkedList._tail?.data);
+        expect(linkedList._tail?.parent?.data).toEqual(1);
 
-        const node3 = { data: 'test', child: null, parent: null };
-        linkedList.add(node3);
+        linkedList.add(3);
 
-        expect(linkedList._head?.data).toEqual(node1.data);
-        expect(node3.data).toEqual(linkedList._tail?.data);
-        expect(linkedList._tail?.parent?.data).toEqual(node2.data);
+        expect(linkedList._head?.data).toEqual(1);
+        expect(3).toEqual(linkedList._tail?.data);
+        expect(linkedList._tail?.parent?.data).toEqual(2);
     });
     it('should remove head', () => {
         const linkedList = new DoublyLinkedList();
-        const node1 = { data: 1, child: null, parent: null };
 
-        linkedList.add(node1);
+        linkedList.add(1);
         linkedList.removeHead();
 
         expect(linkedList._head).toEqual(null);
@@ -37,19 +33,16 @@ describe('Doubly linked list', () => {
     it('should remove last node', () => {
         const linkedList = new DoublyLinkedList();
 
-        const node1 = { data: 1, child: null, parent: null };
-        linkedList.add(node1);
-        const node2 = { data: 2, child: null, parent: null };
-        linkedList.add(node2);
-        const node3 = { data: 'test', child: null, parent: null };
-        linkedList.add(node3);
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.add(3);
 
         linkedList.removeLast();
-        expect(node1.data).toEqual(linkedList._head?.data);
-        expect(node2.data).toEqual(linkedList._tail?.data);
+        expect(1).toEqual(linkedList._head?.data);
+        expect(2).toEqual(linkedList._tail?.data);
 
         linkedList.removeLast();
-        expect(node1.data).toEqual(linkedList._head?.data);
+        expect(1).toEqual(linkedList._head?.data);
         expect(linkedList._tail).toEqual(null);
 
         linkedList.removeLast();
@@ -59,27 +52,20 @@ describe('Doubly linked list', () => {
     it('should replace tail', () => {
         const linkedList = new DoublyLinkedList();
 
-        const node1 = { data: 1, child: null, parent: null };
-        linkedList.add(node1);
-        const node2 = { data: 2, child: null, parent: null };
-        linkedList.add(node2);
-        const node3 = { data: 'test', child: null, parent: null };
-
-        linkedList.replaceTail(node3);
-        expect(node1.data).toEqual(linkedList._head?.data);
-        expect(node3.data).toEqual(linkedList._tail?.data);
+        linkedList.add(1);
+        linkedList.add(2);
+        linkedList.replaceTail(3);
+        expect(1).toEqual(linkedList._head?.data);
+        expect(3).toEqual(linkedList._tail?.data);
     });
     it('should replace head', () => {
         const linkedList = new DoublyLinkedList();
 
-        const node1 = { data: 1, child: null, parent: null };
-        linkedList.add(node1);
-        const node2 = { data: 2, child: null, parent: null };
-        linkedList.add(node2);
-        const node3 = { data: 'test', child: null, parent: null };
+        linkedList.add(1);
+        linkedList.add(2);
 
-        linkedList.replaceHead(node3);
-        expect(node3.data).toEqual(linkedList._head?.data);
+        linkedList.replaceHead(3);
+        expect(3).toEqual(linkedList._head?.data);
         expect(linkedList._tail).toEqual(null);
     });
 });

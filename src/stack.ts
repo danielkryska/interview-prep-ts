@@ -1,6 +1,6 @@
 import { LinkedList } from "./linked-list";
 
-export class Stack {
+export class Stack<DataType> {
     _counter = 0;
     _linkedList = new LinkedList();
 
@@ -8,7 +8,7 @@ export class Stack {
         return this._counter;
     }
 
-    pop(): any | null {
+    pop(): DataType | null {
         if (this._counter <= 0) {
             return null;
         }
@@ -19,12 +19,12 @@ export class Stack {
         return data;
     }
 
-    push(data: any): void {
+    push(data: DataType): void {
         this._linkedList.add({ data, child: null });
         this._counter++;
     }
 
-    peek(): any | null {
+    peek(): DataType | null {
         if (this._counter === 0) {
             return null;
         }

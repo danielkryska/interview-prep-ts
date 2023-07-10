@@ -4,19 +4,25 @@ interface Node<T> {
     child: Node<any> | null;
 }
 
-export class DoublyLinkedList {
-    _head: Node<any> | null = null;
-    _tail: Node<any> | null = null;
+export class DoublyLinkedList<DataType> {
+    _head: Node<DataType> | null = null;
+    _tail: Node<DataType> | null = null;
 
-    get head(): Node<any> | null {
+    get head(): Node<DataType> | null {
         return this._head;
     }
 
-    get tail(): Node<any> | null {
+    get tail(): Node<DataType> | null {
         return this._tail;
     }
 
-    add<T>(node: Node<T> & { child: null }): void {
+    add(data: DataType): void {
+        const node: Node<DataType> = {
+            data,
+            parent: null,
+            child: null
+        }
+
         if (this._head === null) {
             this._head = node;
             return;
@@ -30,7 +36,7 @@ export class DoublyLinkedList {
         }
 
         node.parent = this._tail;
-        (this._tail as Node<any>).child = node;
+        (this._tail as Node<DataType>).child = node;
         this._tail = node;
     }
     removeHead(): void {
@@ -55,13 +61,19 @@ export class DoublyLinkedList {
 
         let lastNode = this._head;
         while(!!lastNode?.child?.child) {
-            lastNode = (lastNode as Node<any>).child as Node<any>;
+            lastNode = (lastNode as Node<DataType>).child as Node<DataType>;
         }
 
         lastNode.child = null;
         this._tail = lastNode;
     }
-    replaceTail<T>(newNode: Node<T> & { child: null }): void {
+    replaceTail(data: DataType): void {
+        const newNode: Node<DataType> = {
+            data,
+            parent: null,
+            child: null
+        }
+
         if (this._head === null) {
             return;
         }
@@ -79,7 +91,12 @@ export class DoublyLinkedList {
         lastNode.child = newNode;
         this._tail = newNode;
     }
-    replaceHead<T>(newNode: Node<T> & { child: null }): void {
+    replaceHead(data: DataType): void {
+        const newNode: Node<DataType> = {
+            data,
+            parent: null,
+            child: null
+        }
         this._head = newNode;
         this._tail = null;
     }

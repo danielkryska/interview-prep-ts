@@ -2,7 +2,7 @@ import { Stack } from "./stack";
 
 describe('Stack', () => {
     it('should push', () => {
-        const stack = new Stack();
+        const stack = new Stack<string>();
         stack.push("test");
         expect(stack.peek()).toStrictEqual("test");
     });
